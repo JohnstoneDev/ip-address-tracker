@@ -42,11 +42,11 @@
   </div>
 
   <ul class="list-group list-group-horizontal-md">
-    <li class="list-group-item flex-fill grey-text">IP ADDRESS <span id="ip-info"></span></li>
-    <li class="list-group-item flex-fill grey-text">LOCATION <span id="ip-info"></span></li>
-    <li class="list-group-item flex-fill grey-text">TIMEZONE <span id="ip-info"></span></li>
-    <li class="list-group-item flex-fill grey-text"> UTC <span id="ip-info"></span> <!-- add offset value dynamically using the API --></li>
-    <li class="list-group-item flex-fill grey-text"> ISP <span id="ip-info"></span></li>
+    <li class="list-group-item flex-fill grey-text">IP ADDRESS <span class="ip-info"></span></li>
+    <li class="list-group-item flex-fill grey-text">LOCATION <span class="ip-info"></span></li>
+    <li class="list-group-item flex-fill grey-text">TIMEZONE <span class="ip-info"></span></li>
+    <li class="list-group-item flex-fill grey-text"> UTC <span class="ip-info"></span> <!-- add offset value dynamically using the API --></li>
+    <li class="list-group-item flex-fill grey-text"> ISP <span class="ip-info"></span></li>
   </ul>
 
   </div>
@@ -96,32 +96,27 @@ map.on('click', onMapClick);
         var api_key = "your_api_key";
 
         $(function () {
-          $.ajax({url: "https://geo.ipify.org/api/v2/country,city?apiKey=at_ykbBuK1EVT5l8FOhL8FLq2zyPtPNI&ipAddress=8.8.8.8",           
-          data: {apiKey: api_key, ipAddress: ip},           
-          success: function(data) {               
-            $("ip-infpo").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");           
-            }       
-          });    
+          $.ajax({url: "https://geo.ipify.org/api/v2/country,city?apiKey=at_ykbBuK1EVT5l8FOhL8FLq2zyPtPNI&ipAddress=8.8.8.8",
+          data: {apiKey: api_key, ipAddress: ip},
+          success: function(data) {
+            $("ip-infpo").append("<pre>"+ JSON.stringify(data,"",2)+"</pre>");
+            }
+          });
         });
   }
 </script> -->
 
 <script>
    function getIPInfo(){
-     let url = 'https://api.github.com/users'
-      fetch(url)
-      .then((response)=>{
-        response.text().then((text)=>{
-          text = [text];
-          text.map((user) => {
-            return user[0];
-          })
-        }).catch(err => console.log(err))
-      })
+     let url = 'https://www.cloudflare.com/cdn-cgi/trace'
+     
+     fetch(url)
+     .then(response => response.JSON())
+     .then(data => console.log(data))
+     .catch(error => console.log(error));
    }
 
 </script>
-
 
 
 </body>
